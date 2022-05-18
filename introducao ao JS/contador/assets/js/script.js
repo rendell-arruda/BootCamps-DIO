@@ -1,25 +1,36 @@
 // teste das implementações
-var currentNumberWrapper = document.getElementById('currentNumber')
-var currentNumber = 0
+let currentNumberWrapper = document.getElementById('currentNumber')
+let currentNumber = 0
 
-let subtrair = document.getElementById('decrement')
-let acrescentar = document.getElementById('increment')
-
+const subtrair = document.getElementById('subtrair')
 subtrair.addEventListener('click', decrement)
+
+const acrescentar = document.getElementById('adicionar')
 acrescentar.addEventListener('click', increment)
 
 function decrement() {
-  currentNumber = currentNumber - 1
+  if (currentNumber < 0) {
+    document.getElementById('decrement').disabled = true
+  }
+
+  currentNumber--
   currentNumberWrapper.innerHTML = currentNumber
+
   if (currentNumber < 0) {
     currentNumberWrapper.style.color = 'red'
   } else {
     currentNumberWrapper.style.color = '#efeff8'
   }
 }
+
 function increment() {
-  currentNumber = currentNumber + 1
+  if (currentNumber >= 10) {
+    document.getElementById('increment').disabled = true
+  }
+
+  currentNumber++
   currentNumberWrapper.innerHTML = currentNumber
+
   if (currentNumber < 0) {
     currentNumberWrapper.style.color = 'red'
   } else {
